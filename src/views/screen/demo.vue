@@ -1,5 +1,8 @@
 <template>
   <div class="w-screen h-screen">
-    这样
+    <Amap></Amap>
   </div>
 </template>
+<script setup>
+import Amap from '@/components/Amap/index.vue'
+</script>
