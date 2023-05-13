@@ -12,6 +12,12 @@ const defaultRouter = [
         component: () => import('@/views/screen/demo.vue'),
         meta: { title: '智慧大屏' },
       },
+      {
+        path: '/bim',
+        name: 'Bim',
+        component: () => import('@/views/screen/bim.vue'),
+        meta: { title: '基于BIM轻量化的智慧大屏' },
+      },
     ],
   },
 ]
