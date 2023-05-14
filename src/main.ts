@@ -11,8 +11,8 @@ const app = createApp(App)
 app.use(DataVVue3)
 app.component('v-chart', ECharts)
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'BIMGO'
+router.beforeEach((to, _, next) => {
+  document.title = (to.meta.title || 'BIMGO') as string
   next()
 })
 
