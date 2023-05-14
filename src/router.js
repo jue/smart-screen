@@ -4,7 +4,7 @@ const defaultRouter = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/demo',
+    redirect: '/bim',
     children: [
       {
         path: '/demo',
