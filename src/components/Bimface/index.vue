@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen" id="domId"></div>
+  <div id="domId"></div>
 </template>
 <script setup>
 import { onMounted, ref } from 'vue'
@@ -281,7 +281,7 @@ function initMat() {
 </script>
 <style lang="scss" scoped>
 #domId {
-  ::v-deep(.bfui-align-top) {
+  :deep(.bfui-align-top) {
     display: none;
   }
 }
