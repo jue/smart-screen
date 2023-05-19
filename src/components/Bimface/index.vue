@@ -5,7 +5,7 @@
 import { onMounted, ref } from 'vue'
 const viewer = ref(null)
 const app = ref(null)
-const viewToken = '54d081658a494233bfa7fe24ec7350f6'
+const viewToken = 'b39f2b92326e4539b0018cbf9a35fadb'
 let layerId = '2154800498944640'
 
 const layerMng = ref(null)
