@@ -5,22 +5,33 @@
 import { onMounted, ref } from 'vue'
 const viewer = ref(null)
 const app = ref(null)
-// 这个viewToken可从这个网址get https://bimface.com/api/console/share/preview/viewtoken?token=142803ff
-const viewToken = '9733ab0e7c8d406d8b46c83c8e34cf6e'
-let layerId = '2154800498944640'
+const viewToken = ref('')
 
 const layerMng = ref(null)
 
 let uiMng, mainToolbar, toolbar, extLayer
 
+const getViewToken = async () => {
+  try {
+    const response = await fetch('https://bimface.com/api/console/share/preview/viewtoken?token=142803ff')
+    const data = await response.json()
+    if (data.code === 'success') {
+      viewToken.value = data.data
+      initBimface()
+    }
+  } catch (error) {
+    console.error('获取 viewToken 失败：', error)
+  }
+}
+
 const initBimface = () => {
   let BimfaceLoaderConfig = new BimfaceSDKLoaderConfig()
-  BimfaceLoaderConfig.viewToken = viewToken
+  BimfaceLoaderConfig.viewToken = viewToken.value
   BimfaceSDKLoader.load(BimfaceLoaderConfig, successCallback, failureCallback)
 }
 
 onMounted(() => {
-  initBimface()
+  getViewToken()
 })
 
 const successCallback = (viewMetaData) => {
@@ -32,7 +43,7 @@ const successCallback = (viewMetaData) => {
 
   // 获取viewer并加载场景
   viewer.value = app.value.getViewer()
-  viewer.value.addScene(viewToken)
+  viewer.value.addScene(viewToken.value)
 
   // 场景加载的监听事件，场景加载后获取主工具条、管理器等对象
   viewer.value.addEventListener(
@@ -272,7 +283,7 @@ const addRingScan = () => {
 }
 
 // 初始化材质
-function initMat() {
+function initMat () {
   let materialConfig = new Glodon.Bimface.Plugins.Material.MaterialConfig()
   materialConfig.viewer = viewer.value
   materialConfig.src =
