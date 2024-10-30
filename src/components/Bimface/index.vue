@@ -6,7 +6,7 @@ import { onMounted, ref } from 'vue'
 const viewer = ref(null)
 const app = ref(null)
 // 这个viewToken可从这个网址get https://bimface.com/api/console/share/preview/viewtoken?token=142803ff
-const viewToken = '5e84ecdb6eff48eca0809a92d794a70e'
+const viewToken = '9733ab0e7c8d406d8b46c83c8e34cf6e'
 let layerId = '2154800498944640'
 
 const layerMng = ref(null)
